@@ -9,6 +9,8 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
+const secrets = require('./secrets.json');
+
 // database connection variable
 var con;
 
@@ -41,19 +43,9 @@ app.get('/db/get', (req, res) => {
 
 function connectToDatabase() {
     if (devMode) {
-        con = mysql.createConnection({
-            host: "localhost",
-            user: "root",
-            password: "root",
-            database: "comp3005"
-        });
+        con = mysql.createConnection(secrets.dev_mode_config);
     } else {
-        con = mysql.createConnection({
-            host: "mysql.comp3005.karldamus.com",
-            user: "comp3005admin",
-            password: "karlroyadmin",
-            database: "comp3005"
-        });
+        con = mysql.createConnection(secrets.prod_mode_config);
     }
 
     con.connect(function(err) {
