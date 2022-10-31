@@ -20,6 +20,7 @@
 }
 ```
 
+- Added Author data and converted to JSON from the above mentioned online fake dataset (./public/data/Authors.json)
 - Added routes for getting Book data and move Database connection and test query to Database route
 - Created first mock design for landing page (./design/pages)
   - Desktop
