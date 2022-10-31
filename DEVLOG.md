@@ -26,6 +26,8 @@
   - Mobile
 - Created logo for project (./design/logos)
 
+**- Karl Damus**
+
 ## Thursday, October 27th, 2022
 
 - Created local testing server with local database in PHPMyAdmin
