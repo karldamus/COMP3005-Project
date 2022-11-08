@@ -6,6 +6,8 @@ const mysql = require('mysql2');
 
 const secrets = require('../secrets.json');
 
+let books = require('../public/data/Books.json');
+
 const router = express.Router();
 
 // database connection variable
@@ -29,6 +31,47 @@ router.get('/get', (req, res) => {
             res.send(rows);
         }
     });
+});
+
+router.get('/addBooks', (req, res) => {
+    connectToDatabase();
+
+    // let SQL = "INSERT INTO `books` "
+
+    // INSERT INTO `books`(`db_id`, `ISBN`, `book_id`, `title`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+    for (let i = 0; i < books.length; i++) {
+        console.log(books[i]);
+
+        let SQL = "INSERT INTO `books`(`ISBN`, `book_id`, `title`) VALUES ('" + books[i].ISBN + "', '" + books[i].BookID + "', '" + books[i].Title + "')";
+
+        con.query(SQL, function(err, rows, fields) {
+            if (err) {
+                console.log(err);
+                res.send(err);
+            } else {
+                console.log(rows);
+                // res.send(rows);
+            }
+        });
+    };
+
+    res.send("Books added");
+})
+
+router.get('/getBooks', (req, res) => {
+    connectToDatabase();
+
+    con.query('SELECT * FROM `books`', function(err, rows, fields) {
+        if (err) {
+            console.log(err);
+            res.send(err);
+        } else {
+            console.log(rows);
+            res.send(rows);
+        }
+    });
+
 });
 
 function connectToDatabase() {
