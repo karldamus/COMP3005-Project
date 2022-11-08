@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "comp3005project",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -11,6 +11,16 @@
     "express": "^4.18.2",
     "mysql2": "^2.3.3"
   },
-  "devDependencies": {},
-  "description": ""
+  "description": "This is the final project for COMP3005 at Carleton University. The task of this project is outlined below:",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karldamus/COMP3005-Project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/karldamus/COMP3005-Project/issues"
+  },
+  "homepage": "https://github.com/karldamus/COMP3005-Project#readme"
 }

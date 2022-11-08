@@ -7,3 +7,5 @@ gettingstarted.pdf
 .obsidian
 
 *.csv
+package.json
+package-lock.json
