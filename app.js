@@ -12,8 +12,12 @@ const Books = require('./public/data/Books.json');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send("Hello world");
+    // send home.html file
+    res.sendFile(__dirname + '/public/static/html/home.html');
 });
+
+app.use('/book', require('./routes/bookRouter'));
+app.use('/user', require('./routes/userRouter'));
 
 // use books router under /books
 app.use('/books', require('./routes/BookDataRouter'));
