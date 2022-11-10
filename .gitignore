@@ -5,8 +5,11 @@ gettingstarted.md
 gettingstarted.pdf
 
 .obsidian
+.vscode
 
 *.csv
 
 package.json
 package-lock.json
+
+.env

@@ -1,3 +1,11 @@
+## Thursday, November 10, 2022
+- Updated way of connecting to database using db.js, MySQL pool, and env variables
+- Deleted old "testing" routes to incorporate new db connection
+- Added routes for getting: single book, all books, and sorting by column in the books table
+- Added user router
+
+**- Karl Damus**
+
 ## Sunday, October 30, 2022
 - Added Book data and converted to JSON from this [online fake dataset](https://help.tableau.com/current/pro/desktop/en-us/bookshop_data.htm) (./public/data/Books.json)
   - Each book has the following object format:
