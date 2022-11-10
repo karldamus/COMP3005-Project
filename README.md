@@ -6,6 +6,7 @@ This is the final project for COMP3005 at Carleton University. The task of this 
 ### Links
 - [LIVE SITE](http://comp3005.karldamus.com)
 - [DEVLOG](https://github.com/karldamus/COMP3005-Project/blob/main/DEVLOG.md)
+- [PROJECT OUTLINE](https://github.com/karldamus/COMP3005-Project/blob/main/docs/projectoutline.md)
 
 ### Creators:
 - Karl Damus
