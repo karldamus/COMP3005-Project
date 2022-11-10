@@ -5,6 +5,9 @@ const express = require('express');
 const app = express();
 const mysql = require('mysql2');
 
+// env
+require("dotenv").config();
+
 // data for the database
 const Books = require('./public/data/Books.json');
 
@@ -13,17 +16,12 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     // send home.html file
+    console.log(process.env.dev_host);
     res.sendFile(__dirname + '/public/static/html/home.html');
 });
 
 app.use('/book', require('./routes/bookRouter'));
 app.use('/user', require('./routes/userRouter'));
-
-// use books router under /books
-app.use('/books', require('./routes/BookDataRouter'));
-
-// use db router under /db
-app.use('/db', require('./routes/DatabaseRouter'));
 
 // 
 // START APP
