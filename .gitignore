@@ -10,3 +10,5 @@ gettingstarted.pdf
 
 package.json
 package-lock.json
+
+.env
