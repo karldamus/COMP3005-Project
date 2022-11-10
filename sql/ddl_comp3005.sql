@@ -1,0 +1,95 @@
+CREATE TABLE IF NOT EXISTS PUBLISHERS (
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    publisher_house     VARCHAR(30) NOT NULL,
+    city                VARCHAR(30),
+    state               VARCHAR(30),
+    country             VARCHAR(30),
+    year_established    INT
+);
+
+CREATE TABLE IF NOT EXISTS AUTHORS (
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    name    VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS BOOKS (
+    id              INT PRIMARY KEY,
+    name            VARCHAR(100) NOT NULL,
+    ISBN            VARCHAR(20) NOT NULL,
+    genre           VARCHAR(20) NOT NULL,
+    price           INT NOT NULL,
+    num_pages       INT NOT NULL,
+    publisher_id    INT,
+    author_id       INT,
+
+    FOREIGN KEY (publisher_id)
+        REFERENCES PUBLISHERS (id),
+    FOREIGN KEY (author_id)
+        REFERENCES AUTHORS (id)
+);
+
+CREATE TABLE IF NOT EXISTS SHIPPING_ADDRESS (
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    street_1    VARCHAR(30) NOT NULL,
+    street_2    VARCHAR(30),
+    country     VARCHAR(30) NOT NULL,
+    city        VARCHAR(30) NOT NULL,
+    province    VARCHAR(30) NOT NULL,
+    postal_code VARCHAR(6) NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS BILLING_ADDRESS (
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    street_1    VARCHAR(30) NOT NULL,
+    street_2    VARCHAR(30),
+    country     VARCHAR(30) NOT NULL,
+    city        VARCHAR(30) NOT NULL,
+    province    VARCHAR(30) NOT NULL,
+    postal_code VARCHAR(6) NOT NULL 
+);
+
+CREATE TABLE IF NOT EXISTS CREDIT_CARD (
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    name                VARCHAR(50),
+    number              INT,  
+    expiry_date         DATE,
+    billing_address_id  INT,
+    
+    FOREIGN KEY (billing_address_id)
+        REFERENCES BILLING_ADDRESS (id)
+);
+
+CREATE TABLE IF NOT EXISTS USERS (
+    id                      INT PRIMARY KEY AUTO_INCREMENT,
+    level                   INT NOT NULL,
+    name                    VARCHAR(50) NOT NULL,
+    username                VARCHAR(50) NOT NULL,
+    password                VARCHAR(150) NOT NULL,
+    shipping_address_id     INT,
+    credit_card_id          INT,
+
+    FOREIGN KEY (shipping_address_id)
+        REFERENCES SHIPPING_ADDRESS (id),
+    FOREIGN KEY (credit_card_id)
+        REFERENCES CREDIT_CARD (id)
+);
+
+CREATE TABLE IF NOT EXISTS ORDERS (
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    status  INT NOT NULL,
+    users_id INT,
+
+    FOREIGN KEY(users_id)
+        REFERENCES USERS(id)
+);  
+
+CREATE TABLE IF NOT EXISTS ORDER_ITEMS (
+    quantity    INT NOT NULL,
+    order_id    INT,
+    book_id     INT,
+    
+    FOREIGN KEY (order_id)
+        REFERENCES ORDERS (id),
+    FOREIGN KEY (book_id)
+        REFERENCES BOOKS (id)
+);

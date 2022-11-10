@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 app.use('/book', require('./routes/bookRouter'));
 app.use('/user', require('./routes/userRouter'));
+app.use('/db', require('./routes/dbInitRouter'));
 
 // 
 // START APP
