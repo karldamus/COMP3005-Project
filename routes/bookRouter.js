@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     // connect to database and get all books
     let QUERY = "SELECT * FROM books";
 
-    db.get(QUERY, function(err, rows, fields) {
+    db.query(QUERY, function(err, rows, fields) {
         if (err) {
             console.log(err);
             res.send(err);
@@ -27,7 +27,7 @@ router.get('/sortby/:column', (req, res) => {
     // connect to database and get all books
     let QUERY = "SELECT * FROM books ORDER BY " + req.params.column;
 
-    db.get(QUERY, function(err, rows, fields) {
+    db.query(QUERY, function(err, rows, fields) {
         if (err) {
             console.log(err);
             res.send(err);
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
     // connect to database and get book with id
     let QUERY = "SELECT * FROM `books` WHERE `book_id` = '" + id + "'";
 
-    db.get(QUERY, function(err, rows, fields) {
+    db.query(QUERY, function(err, rows, fields) {
         if (err) {
             console.log(err);
             res.send(err);
