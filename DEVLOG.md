@@ -12,6 +12,7 @@
 - Created DDL statements (v1) -- related to ER Diagram
 
 **- Karl Damus**
+
 **- Roy Cheruiyot**
 
 ## Sunday, October 30, 2022
