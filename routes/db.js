@@ -1,6 +1,7 @@
 let CONSTANTS = require('../public/constants/basic');
 
 var mysql = require('mysql2');
+// const { get } = require('./bookRouter');
 
 // create a pool
 var pool;
@@ -28,13 +29,14 @@ if (CONSTANTS.DEV_MODE) {
     });
 }
 
-exports.get = function (SQL, callback) {
-    pool.getConnection(function (err, connection) {
+// create promise based query function
+exports.query = async function (SQL, callback) {
+    pool.getConnection(async function (err, connection) {
         if (err) {
             console.log(err);
             callback(err);
         } else {
-            connection.query(SQL, function (err, rows, fields) {
+            await connection.query(SQL, async function (err, rows, fields) {
                 if (err) {
                     console.log(err);
                     callback(err);
@@ -44,5 +46,27 @@ exports.get = function (SQL, callback) {
                 }
             });
         }
+    });
+}
+
+// create promise based query function
+exports.promiseQuery = function (SQL) {
+    return new Promise((resolve, reject) => {
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else {
+                connection.query(SQL, function (err, rows, fields) {
+                    if (err) {
+                        console.log(err);
+                        reject(err);
+                    } else {
+                        console.log(rows);
+                        resolve(rows);
+                    }
+                });
+            }
+        });
     });
 }
