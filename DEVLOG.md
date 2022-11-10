@@ -3,8 +3,16 @@
 - Deleted old "testing" routes to incorporate new db connection
 - Added routes for getting: single book, all books, and sorting by column in the books table
 - Added user router
+- Added database initialization routes
+- Added promise-based query to help with database initialization when running multiple queries
 
 **- Karl Damus**
+
+- Created ER Diagram (v1)
+- Created DDL statements (v1) -- related to ER Diagram
+
+**- Karl Damus**
+**- Roy Cheruiyot**
 
 ## Sunday, October 30, 2022
 - Added Book data and converted to JSON from this [online fake dataset](https://help.tableau.com/current/pro/desktop/en-us/bookshop_data.htm) (./public/data/Books.json)
