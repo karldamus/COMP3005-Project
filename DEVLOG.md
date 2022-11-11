@@ -1,3 +1,13 @@
+## Friday, November 11, 2022
+- Updated ddl statements -- id's are more understandable and useable (given the "fake data" we are using for this project)
+- Added functionality for automatically creating database tables
+- Added functionality for automatically adding data to tables for the following tables:
+  - publishers
+  - authors
+  - books
+
+**- Karl Damus**
+
 ## Thursday, November 10, 2022
 - Updated way of connecting to database using db.js, MySQL pool, and env variables
 - Deleted old "testing" routes to incorporate new db connection
