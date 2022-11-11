@@ -39,9 +39,26 @@ nodemon app.js
 
 #### Initialize and Insert Data into the Database
 
-1. Head to [http://localhost:3000/db/init](http://localhost:3000/db/init) to create all the tables
-2. Head to [http://localhost:3000/db/insert](http://localhost:3000/db/insert) to insert all the values
+1. Head to http://localhost:3000/db/init to create all the tables
+2. Head to http://localhost:3000/db/insert to insert all the values
 
+### Common Problems
+
+Problem: The site http://localhost:3000 can't be reached
+
+Potential fixes:
+- Is app.js running on port 3000? Check to see that `DEV_MODE` is set to `true` in `root/public/constants/basic.js`.
+
+Problem: No books are being displayed.
+
+Potential fixes:
+- Did you initialize the database **and** insert data into the database by using the method above?
+- Is XAMPP control panel still running?
+
+Problem: Database connection can't be made and/or tables cannot be created.
+
+Potential fixes:
+- Did you set up your `.env` file correctly? Double check the values in the database against your values in `.env` file.
 
 ### Links
 - [LIVE SITE](http://comp3005.karldamus.com)
