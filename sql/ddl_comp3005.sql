@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS PUBLISHERS (
-    id                  VARCHAR(6) PRIMARY KEY,
+    id                  INT PRIMARY KEY AUTO_INCREMENT,
+    publisher_id        VARCHAR(6) UNIQUE NOT NULL,
     publisher_house     VARCHAR(30) NOT NULL,
     city                VARCHAR(30),
     state               VARCHAR(30),
@@ -8,24 +9,26 @@ CREATE TABLE IF NOT EXISTS PUBLISHERS (
 );
 
 CREATE TABLE IF NOT EXISTS AUTHORS (
-    id      VARCHAR(6) PRIMARY KEY,
-    name    VARCHAR(20) NOT NULL
+    id          INT PRIMARY KEY AUTO_INCREMENT,
+    author_id   VARCHAR(6) UNIQUE NOT NULL,
+    name        VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS BOOKS (
-    id              VARCHAR(6) PRIMARY KEY,
+    id              INT PRIMARY KEY AUTO_INCREMENT,
+    book_id         VARCHAR(6) UNIQUE NOT NULL,
     name            VARCHAR(100) NOT NULL,
     ISBN            VARCHAR(20) NOT NULL,
     genre           VARCHAR(20) NOT NULL,
-    price           INT NOT NULL,
+    price           FLOAT(4) NOT NULL,
     num_pages       INT NOT NULL,
-    publisher_id    VARCHAR(6),
-    author_id       VARCHAR(6),
+    publisher_id    VARCHAR(6) NOT NULL,
+    author_id       VARCHAR(6) NOT NULL,
 
     FOREIGN KEY (publisher_id)
-        REFERENCES PUBLISHERS (id),
+        REFERENCES PUBLISHERS (publisher_id),
     FOREIGN KEY (author_id)
-        REFERENCES AUTHORS (id)
+        REFERENCES AUTHORS (author_id)
 );
 
 CREATE TABLE IF NOT EXISTS SHIPPING_ADDRESS (
@@ -85,11 +88,11 @@ CREATE TABLE IF NOT EXISTS ORDERS (
 
 CREATE TABLE IF NOT EXISTS ORDER_ITEMS (
     quantity    INT NOT NULL,
-    order_id    INT,
-    book_id     VARCHAR(6),
+    order_id    INT NOT NULL,
+    book_id     VARCHAR(6) NOT NULL,
     
     FOREIGN KEY (order_id)
         REFERENCES ORDERS (id),
     FOREIGN KEY (book_id)
-        REFERENCES BOOKS (id)
+        REFERENCES BOOKS (book_id)
 );
