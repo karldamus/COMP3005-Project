@@ -59,6 +59,7 @@ Problem: Database connection can't be made and/or tables cannot be created.
 
 Potential fixes:
 - Did you set up your `.env` file correctly? Double check the values in the database against your values in `.env` file.
+- Is XAMPP control panel still running?
 
 ## Links
 - [LIVE SITE](http://comp3005.karldamus.com)
