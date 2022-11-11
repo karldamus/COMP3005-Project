@@ -1,7 +1,47 @@
 ### Project Overview
-This is the final project for COMP3005 at Carleton University. The task of this project is outlined below:
+This is the final project for COMP3005 at Carleton University. The basic outline of the project is described below:
 
-> Design and implement an application for an online bookstore (Look Inna Book). This application lets users browse a collection of books that are available in the bookstore. A user can search the bookstore by book name, author name, ISBN, genre, etc.. When a book is selected, information on the author(s), genre(s), publisher, number of pages, price, etc. can be viewed. A user can select as many books as she likes to be added to the checkout basket. A user needs to be registered in the bookstore to be able to checkout. When checking out, the user inserts billing and shipping information (can be different than those used in registration), and completes the order. The bookstore has the feature of tracking an order via an order number. A user can use this order number to track where the order is currently. Although shipping is carried out by a third-party shipping service, the online bookstore should have the tracking information available for when the user inquires about an order using the order number. Assume all books are shipped from only one warehouse (no multiple order numbers for multiple books shipped from multiple warehouses). The bookstore owners can add new books to their collections, or remove books from their store. They also need to store information on the publishers of books such as name, address, email address, phone number(s), banking account, etc.. The banking account for publishers is used to transfer a percentage of the sales of books published by these publishers. This percentage is variable and changes from one book to another. The owners should have access to reports that show sales vs. expenditures, sales per genres, sales per author, etc.. The application should also be able to automatically place orders for new books if the remaining quantity is less than a given threshold (e.g., 10 books). This is done by sending an email to the publisher of the limited books to order a number of books equal to how many books were sold in the previous month (you do not have to implement the email sending component).
+**Brief:** Design and implement an application for an online bookstore (Look Inna Book)
+
+**Feature List:**
+
+| Feature Name           | Permission Level |
+|------------------------|------------------|
+| Browse books           | Anyone           |
+| View a book            | Anyone           |
+| Add books to your cart | Anyone           |
+| Login / Register       | Anyone           |
+| Checkout               | Logged in users  |
+| Track order            | Logged in users  |
+| Add new books          | Admin            |
+| Remove books           | Admin            |
+| View publisher info    | Admin            |
+| View sale reports      | Admin            |
+| Order new books        | Server           |
+
+### Getting Started with Local Development
+
+1. Clone the project
+2. Create a `.env` file and insert the values according to the .env.example file
+3. Install XAMPP control panel
+   1. Start both the Apache and MySQL services and go to the MySQL Admin page
+   2. Update the localhost user according to your `.env` username and password (User accounts tab)
+4. If changes in MySQL were made, update your phpMyAdmin/config.inc.php file (`$cfg['Servers'][$i]['password']`)
+5. Create a new database with the same name as the value of `dev_database` in your `.env` file
+6. Run the following commands in a terminal from the root directory of this project
+
+```shell
+npm init
+npm install <dependency_name> # list all dependencies in requirements.txt
+npm install -g nodemon # to run the server
+nodemon app.js
+```
+
+#### Initialize and Insert Data into the Database
+
+1. Head to [http://localhost:3000/db/init](http://localhost:3000/db/init) to create all the tables
+2. Head to [http://localhost:3000/db/insert](http://localhost:3000/db/insert) to insert all the values
+
 
 ### Links
 - [LIVE SITE](http://comp3005.karldamus.com)
