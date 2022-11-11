@@ -22,7 +22,7 @@ This is the final project for COMP3005 at Carleton University. The basic outline
 ### Getting Started with Local Development
 
 1. Clone the project
-2. Create a `.env` file and insert the values according to the .env.example file
+2. Create a `.env` file and insert the values according to the `.env.example` file
 3. Install XAMPP control panel
    1. Start both the Apache and MySQL services and go to the MySQL Admin page
    2. Update the localhost user according to your `.env` username and password (User accounts tab)
