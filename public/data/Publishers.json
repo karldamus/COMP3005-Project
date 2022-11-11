@@ -1,0 +1,38 @@
+[
+    {
+      "PubID": "CHP",
+      "Publishing House": "Cedar House Publishers",
+      "City": "Friday Harbor",
+      "State": "Washington",
+      "Country": "USA",
+      "Year Established": 2086,
+      "Marketing Spend": "72,000"
+    },
+    {
+      "PubID": "SSC",
+      "Publishing House": "Sound & Seas Co.",
+      "City": "Dunedin",
+      "State": "Otago",
+      "Country": "New Zealand",
+      "Year Established": 2153,
+      "Marketing Spend": "151,000"
+    },
+    {
+      "PubID": "PP",
+      "Publishing House": "Palimpsest Printing",
+      "City": "Edinburgh",
+      "State": "Scotland",
+      "Country": "UK",
+      "Year Established": 1982,
+      "Marketing Spend": "48,000"
+    },
+    {
+      "PubID": "ESP",
+      "Publishing House": "Etaoin Shrdlu Press",
+      "City": "Seattle",
+      "State": "Washington",
+      "Country": "USA",
+      "Year Established": 2069,
+      "Marketing Spend": "2,320,000"
+    }
+]
