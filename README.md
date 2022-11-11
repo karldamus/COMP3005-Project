@@ -1,4 +1,4 @@
-### Project Overview
+## Project Overview
 This is the final project for COMP3005 at Carleton University. The basic outline of the project is described below:
 
 **Brief:** Design and implement an application for an online bookstore (Look Inna Book)
@@ -19,7 +19,7 @@ This is the final project for COMP3005 at Carleton University. The basic outline
 | View sale reports      | Admin            |
 | Order new books        | Server           |
 
-### Getting Started with Local Development
+## Getting Started with Local Development
 
 1. Clone the project
 2. Create a `.env` file and insert the values according to the `.env.example` file
@@ -42,7 +42,7 @@ nodemon app.js
 1. Head to http://localhost:3000/db/init to create all the tables
 2. Head to http://localhost:3000/db/insert to insert all the values
 
-### Common Problems
+## Common Problems
 
 Problem: The site http://localhost:3000 can't be reached
 
@@ -60,11 +60,11 @@ Problem: Database connection can't be made and/or tables cannot be created.
 Potential fixes:
 - Did you set up your `.env` file correctly? Double check the values in the database against your values in `.env` file.
 
-### Links
+## Links
 - [LIVE SITE](http://comp3005.karldamus.com)
 - [DEVLOG](https://github.com/karldamus/COMP3005-Project/blob/main/DEVLOG.md)
 - [PROJECT OUTLINE](https://github.com/karldamus/COMP3005-Project/blob/main/docs/projectoutline.md)
 
-### Creators:
+## Creators:
 - Karl Damus
 - Roy Cheruiyot
