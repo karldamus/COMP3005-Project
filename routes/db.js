@@ -59,9 +59,11 @@ exports.promiseQuery = function (SQL) {
             } else {
                 connection.query(SQL, function (err, rows, fields) {
                     if (err) {
+                        console.log("ERROR INSIDE PROMISE QUERY");
                         console.log(err);
-                        reject(err);
+                        resolve(err);
                     } else {
+                        console.log("SUCCESS INSIDE PROMISE QUERY");
                         console.log(rows);
                         resolve(rows);
                     }
