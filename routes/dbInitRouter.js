@@ -51,7 +51,7 @@ router.get('/insert', async (req, res) => {
         let country = publisher.Country;
         let year_established = publisher["Year Established"];
 
-        let sql = `INSERT INTO publishers (publisher_id, publisher_house, city, state, country, year_established) VALUES ('${id}', '${house}', '${city}', '${state}', '${country}', ${year_established});`;
+        let sql = `INSERT INTO publishers (publisher_id, publisher_house, publisher_city, publisher_state, publisher_country, publisher_year_established) VALUES ('${id}', '${house}', '${city}', '${state}', '${country}', ${year_established});`;
 
         await db.promiseQuery(sql, (err, results, fields) => {
             // if promise is rejected
@@ -69,7 +69,7 @@ router.get('/insert', async (req, res) => {
     // get data from root/public/data/Authors.json
     let authors = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/data/Authors.json'), 'utf8').toString());
 
-    let sql = "INSERT INTO authors (author_id, name) VALUES ";
+    let sql = "INSERT INTO authors (author_id, author_name) VALUES ";
 
     for (let i = 0; i < authors.length; i++) {
         let author = authors[i];
@@ -106,7 +106,7 @@ router.get('/insert', async (req, res) => {
 
     console.log(books);
 
-    sql = "INSERT INTO books (book_id, name, ISBN, genre, price, num_pages, publisher_id, author_id) VALUES "; 
+    sql = "INSERT INTO books (book_id, book_name, book_ISBN, book_genre, book_price, book_num_pages, book_publisher_id, book_author_id) VALUES "; 
 
     for (let i = 0; i < books.length; i++) {
         let book = books[i];
