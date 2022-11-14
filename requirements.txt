@@ -2,3 +2,6 @@ express
 mysql2
 dotenv
 fs
+body-parser
+crypto
+express-session
