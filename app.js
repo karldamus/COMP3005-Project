@@ -8,6 +8,9 @@ const mysql = require('mysql2');
 // env
 require("dotenv").config();
 
+const session = require('express-session');
+app.use(session({secret: process.env.session_secret}));
+
 // data for the database
 const Books = require('./public/data/Books.json');
 
@@ -16,7 +19,12 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     // send home.html file
-    console.log(process.env.dev_host);
+    // check if session exists
+    if (req.session.user) {
+        console.log("Logged in as: " + req.session.user);
+    } else {
+        console.log("Not logged in");
+    }
     res.sendFile(__dirname + '/public/static/html/home.html');
 });
 

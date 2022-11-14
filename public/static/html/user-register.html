@@ -7,6 +7,23 @@
     <title>Register</title>
 </head>
 <body>
-    <p>register</p>
+    <!-- Create registration form -->
+    <!-- <form action="/register" method="POST"> -->
+    <form id="register-form">
+        <!-- name -->
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Name" required>
+        <!-- username -->
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <!-- password -->
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <!-- submit -->
+        <button type="submit" id="register-button">Register</button>
+    </form>
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/2.0.2/sha.js"></script>
+<script src="/static/js/register.js"></script>
 </html>

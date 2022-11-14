@@ -63,6 +63,8 @@ function createTable(listOfBooks) {
 function displayBooks(listOfBooks) {
     let books = JSON.parse(listOfBooks);
 
+    console.log(books);
+
     // get the table
     let table = document.getElementById("books-table");
 
@@ -82,10 +84,20 @@ function displayBooks(listOfBooks) {
         let bookNameCell = document.createElement("td");
         let bookISBN = document.createElement("td");
 
+        // add underline to the book name
+        bookNameCell.style.textDecoration = "underline";
+
+        // add mouse hover to the book name
+        bookNameCell.style.cursor = "pointer";
+
         // add the text to the cells
         bookIdCell.innerHTML = book.book_id;
-        bookNameCell.innerHTML = book.title;
-        bookISBN.innerHTML = book.ISBN;
+        bookNameCell.innerHTML = book.book_name;
+        bookISBN.innerHTML = book.book_ISBN;
+
+        bookNameCell.addEventListener("click", function() {
+            displayBook(book.book_id);
+        });
 
         // add the cells to the row
         row.appendChild(bookIdCell);
@@ -97,6 +109,28 @@ function displayBooks(listOfBooks) {
     }
 
 }
+
+function displayBook(bookId) {
+    console.log("Inside displayBook");
+    // make a get request to /book/:id
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // get the book
+            let book = JSON.parse(this.responseText)[0];
+
+            // get the div to display the book
+            console.log(book);
+        }
+    };
+
+    console.log("GET /book/" + bookId);
+
+    xhttp.open("GET", "/book/" + bookId, true);
+    xhttp.send();
+}
+
 
 function sortBy(column) {
     xhttp = new XMLHttpRequest();

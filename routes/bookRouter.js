@@ -14,10 +14,10 @@ router.get('/', (req, res) => {
 
     db.query(QUERY, function(err, rows, fields) {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.send(err);
         } else {
-            console.log(rows);
+            // console.log(rows);
             res.send(rows);
         }
     });
@@ -29,10 +29,10 @@ router.get('/sortby/:column', (req, res) => {
 
     db.query(QUERY, function(err, rows, fields) {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.send(err);
         } else {
-            console.log(rows);
+            // console.log(rows);
             res.send(rows);
         }
     });
@@ -44,14 +44,17 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
 
     // connect to database and get book with id
-    let QUERY = "SELECT * FROM `books` WHERE `book_id` = '" + id + "'";
+    // let QUERY = "SELECT * FROM `books` WHERE `book_id` = '" + id + "'";
+    let QUERY = "SELECT * FROM `books` INNER JOIN authors ON books.book_author_id=authors.author_id WHERE books.book_id='" + id + "'";
+
+    console.log(QUERY);
 
     db.query(QUERY, function(err, rows, fields) {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.send(err);
         } else {
-            console.log(rows);
+            // console.log(rows);
             res.send(rows);
         }
     });

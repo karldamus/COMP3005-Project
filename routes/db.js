@@ -38,10 +38,10 @@ exports.query = async function (SQL, callback) {
         } else {
             await connection.query(SQL, async function (err, rows, fields) {
                 if (err) {
-                    console.log(err);
+                    // console.log(err);
                     callback(err);
                 } else {
-                    console.log(rows);
+                    // console.log(rows);
                     callback(rows);
                 }
             });
@@ -72,3 +72,4 @@ exports.promiseQuery = function (SQL) {
         });
     });
 }
+
