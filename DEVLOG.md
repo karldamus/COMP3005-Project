@@ -1,3 +1,9 @@
+## Saturday, November 12, 2022
+- Registration logic done
+- Login logic done -- still need to store session in a cookie
+
+**- Karl Damus**
+
 ## Friday, November 11, 2022
 - Updated ddl statements -- id's are more understandable and useable (given the "fake data" we are using for this project)
 - Added functionality for automatically creating database tables
