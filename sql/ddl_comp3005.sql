@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS USERS (
     user_db_id              INT PRIMARY KEY AUTO_INCREMENT,
     user_level                   INT NOT NULL,
     user_name                    VARCHAR(50) NOT NULL,
-    user_username                VARCHAR(50) NOT NULL,
+    user_username                VARCHAR(50) UNIQUE NOT NULL,
     user_password                VARCHAR(150) NOT NULL,
     user_shipping_address_id     INT,
     user_credit_card_id          INT,
