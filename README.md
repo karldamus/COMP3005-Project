@@ -40,7 +40,8 @@ nodemon app.js
 #### Initialize and Insert Data into the Database
 
 1. Head to http://localhost:3000/db/init to create all the tables
-2. Head to http://localhost:3000/db/insert to insert all the values
+2. Restart the server
+3. Head to http://localhost:3000/db/insert to insert all the values
 
 ## Common Problems
 
