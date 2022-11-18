@@ -43,7 +43,7 @@ router.post('/login', urlencodedParser, (req, res) => {
     console.log("Password: " + password);
     console.log("Hashed Password: " + hashed_password);
 
-    let QUERY = `SELECT * FROM users WHERE user_username = '${username}';`;
+    let QUERY = `SELECT * FROM users WHERE username = '${username}';`;
 
     db.promiseQuery(QUERY).then((results) => {
         // if username is not in database
@@ -85,7 +85,7 @@ router.post('/register', urlencodedParser, (req, res) => {
     const password = req.body.password;
 
     // use a promise query to check if user_username already exists
-    let QUERY = "SELECT * FROM users WHERE user_username = '" + username + "'";
+    let QUERY = "SELECT * FROM users WHERE username = '" + username + "'";
 
     db.promiseQuery(QUERY).then(function(rows) {
         if (rows.length > 0) {
@@ -94,7 +94,7 @@ router.post('/register', urlencodedParser, (req, res) => {
         } else {
             // username does not exist
             // insert the user into the database
-            let QUERY = "INSERT INTO users (user_level, user_name, user_username, user_password) VALUES (" + process.env.user_level_common + ", '" + name + "', '" + username + "', '" + password + "')";
+            let QUERY = "INSERT INTO users (level, name, username, password) VALUES (" + process.env.user_level_common + ", '" + name + "', '" + username + "', '" + password + "')";
 
             db.promiseQuery(QUERY).then(function(rows) {
                 res.send(CONSTANTS.registration_codes[200]);
