@@ -1,3 +1,8 @@
+## Friday, November 18, 2022
+- Updated column naming conventions
+
+**- Karl Damus**
+
 ## Saturday, November 12, 2022
 - Registration logic done
 - Login logic done -- still need to store session in a cookie
