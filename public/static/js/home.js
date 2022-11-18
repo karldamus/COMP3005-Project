@@ -92,8 +92,8 @@ function displayBooks(listOfBooks) {
 
         // add the text to the cells
         bookIdCell.innerHTML = book.book_id;
-        bookNameCell.innerHTML = book.book_name;
-        bookISBN.innerHTML = book.book_ISBN;
+        bookNameCell.innerHTML = book.name;
+        bookISBN.innerHTML = book.ISBN;
 
         bookNameCell.addEventListener("click", function() {
             displayBook(book.book_id);
