@@ -4,6 +4,7 @@ let CONSTANTS = require('./public/constants/basic');
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
+const fs = require('fs');
 
 // env
 require("dotenv").config();
@@ -16,7 +17,7 @@ const Books = require('./public/data/Books.json');
 
 // add & configure middleware
 app.use(express.static('public'));
-
+    
 app.get('/', (req, res) => {
     // send home.html file
     // check if session exists
@@ -31,6 +32,20 @@ app.get('/', (req, res) => {
 app.use('/book', require('./routes/bookRouter'));
 app.use('/user', require('./routes/userRouter'));
 app.use('/db', require('./routes/dbInitRouter'));
+
+// display global header on all pages
+// header is located in public/static/html/global-header.html
+// app.use(function(req, res, next) {
+//     res.setHeader('Content-Type', 'text/html');
+//     res.end(new String(fs.readFileSync('./public/static/html/global-header.html')).replace('<my-content></my-content>', fs.readFileSync('./public/static/html/global-header-content.html')));
+//     next();
+// });
+
+app.get('/header', (req, res) => {
+    res.setHeader('Content-Type', 'text/html');
+    // send global-header.html file
+    res.sendFile(__dirname + '/public/static/html/global-header.html');
+});
 
 // 
 // START APP

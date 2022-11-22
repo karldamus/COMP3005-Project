@@ -1,0 +1,53 @@
+html, * {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  padding: 1em;
+}
+
+my-header {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+my-header img {
+  width: 40%;
+  max-width: 200px;
+  height: auto;
+}
+
+my-header .right-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+}
+
+my-header .right-side img {
+  width: 30px;
+  height: 30px;
+}
+
+my-header .right-side .user-box a, my-header .right-side .cart a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+/*# sourceMappingURL=main.css.map */

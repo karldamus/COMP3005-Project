@@ -1,0 +1,15 @@
+html, * {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    padding: 1em;
+}
+
+
+// import my-header
+@import "scss/_my-header";
+
+// import home
+@import "scss/_home";
