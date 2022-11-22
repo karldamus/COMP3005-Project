@@ -51,6 +51,10 @@ my-header .right-side .user-box a, my-header .right-side .cart a {
   gap: 10px;
 }
 
+my-header #header-logo {
+  cursor: pointer;
+}
+
 .books-wrapper {
   width: 100%;
 }
@@ -95,5 +99,43 @@ my-header .right-side .user-box a, my-header .right-side .cart a {
 
 .books-wrapper .single-book:hover {
   background-color: #f5f5f5;
+}
+
+.form {
+  display: -ms-grid;
+  display: grid;
+  row-gap: 0.5em;
+  position: absolute;
+  top: 30%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.form input, .form button {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #ccc;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form span {
+  margin-top: 1em;
+  text-align: center;
+  display: block;
 }
 /*# sourceMappingURL=main.css.map */
