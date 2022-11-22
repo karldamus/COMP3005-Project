@@ -1,14 +1,15 @@
 var xhttp;
 
-window.onload = function() {
+window.onload = async function() {
     console.log ("Hello World");
-
-    // get books from /db/getBooks
+	
     xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = async function() {
         if (this.readyState == 4 && this.status == 200) {
             // createTable(this.responseText);
+			console.log("Received response from /book/more");
+
             displayBooks(this.responseText);
         }
     };
