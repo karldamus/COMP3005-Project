@@ -50,4 +50,50 @@ my-header .right-side .user-box a, my-header .right-side .cart a {
           align-items: center;
   gap: 10px;
 }
+
+.books-wrapper {
+  width: 100%;
+}
+
+.books-wrapper .single-book {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+
+.books-wrapper .single-book .left-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.books-wrapper .single-book .left-side img {
+  width: 20px;
+  background-color: black;
+  padding: 0.5em;
+}
+
+.books-wrapper .single-book .left-side .book-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.books-wrapper .single-book:hover {
+  background-color: #f5f5f5;
+}
 /*# sourceMappingURL=main.css.map */
