@@ -1,3 +1,14 @@
+## Tuesday, November 18, 2022
+- Implemented design for:
+  - home page
+  - login page
+  - registration page
+  - global header
+- Created global header component
+- Fixed login issue (broken by previous update when column names were updated)
+
+**- Karl Damus**
+
 ## Friday, November 18, 2022
 - Updated column naming conventions
 
