@@ -23,6 +23,24 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/more', async (req, res) => {
+    // connect to database and get all books
+    let QUERY = "SELECT books.book_id, books.name as book_name, books.price, authors.name as author_name FROM books JOIN authors on books.author_id=authors.author_id";
+
+    await db.query(QUERY, async function(err, rows, fields) {
+        if (err) {
+			// send err
+			res.send(err);
+
+            // console.log(err);
+            // res.send(err);
+        } else {
+            // console.log(rows);
+            res.send(rows);
+        }
+    });
+});
+
 router.get('/sortby/:column', (req, res) => {
     // connect to database and get all books
     let QUERY = "SELECT * FROM books ORDER BY " + req.params.column;

@@ -1,0 +1,141 @@
+html, * {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  padding: 1em;
+}
+
+my-header {
+  display: block;
+  width: 100%;
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+my-header img {
+  width: 40%;
+  max-width: 200px;
+  height: auto;
+}
+
+my-header .right-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px;
+}
+
+my-header .right-side img {
+  width: 30px;
+  height: 30px;
+}
+
+my-header .right-side .user-box a, my-header .right-side .cart a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+my-header #header-logo {
+  cursor: pointer;
+}
+
+.books-wrapper {
+  width: 100%;
+}
+
+.books-wrapper .single-book {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+
+.books-wrapper .single-book .left-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.books-wrapper .single-book .left-side img {
+  width: 20px;
+  background-color: black;
+  padding: 0.5em;
+}
+
+.books-wrapper .single-book .left-side .book-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.books-wrapper .single-book:hover {
+  background-color: #f5f5f5;
+}
+
+.form {
+  display: -ms-grid;
+  display: grid;
+  row-gap: 0.5em;
+  position: absolute;
+  top: 30%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.form input, .form button {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form button {
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #ccc;
+}
+
+.form h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.form span {
+  margin-top: 1em;
+  text-align: center;
+  display: block;
+}
+/*# sourceMappingURL=main.css.map */

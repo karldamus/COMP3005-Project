@@ -36,7 +36,7 @@ exports.query = async function (SQL, callback) {
             console.log(err);
             callback(err);
         } else {
-            await connection.query(SQL, async function (err, rows, fields) {
+            connection.query(SQL, async function (err, rows, fields) {
                 if (err) {
                     // console.log(err);
                     callback(err);
@@ -46,6 +46,29 @@ exports.query = async function (SQL, callback) {
                 }
             });
         }
+    });
+}
+
+exports.query2 = async function (SQL, callback) {
+	return new Promise((resolve, reject) => {
+        pool.getConnection(function (err, connection) {
+            if (err) {
+                console.log(err);
+                reject(err);
+            } else {
+                connection.query(SQL, function (err, rows, fields) {
+                    if (err) {
+                        console.log("ERROR INSIDE PROMISE QUERY");
+                        // console.log(err);
+                        resolve(err);
+                    } else {
+                        console.log("SUCCESS INSIDE PROMISE QUERY");
+                        // console.log(rows);
+                        resolve(rows);
+                    }
+                });
+            }
+        });
     });
 }
 

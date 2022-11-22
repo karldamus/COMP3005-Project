@@ -46,17 +46,18 @@ router.post('/login', urlencodedParser, (req, res) => {
     let QUERY = `SELECT * FROM users WHERE username = '${username}';`;
 
     db.promiseQuery(QUERY).then((results) => {
+        console.log(results);
         // if username is not in database
         if (results.length == 0) {
             res.send(CONSTANTS.login_codes[404]);
         } else {
             // if username is in database
             // check if password is correct
-            if (results[0].user_password == hashed_password) {
+            if (results[0].password == hashed_password) {
                 // username and password are correct
                 // create a session for the user
                 req.session.user = username;
-                req.session.name = results[0].user_name;
+                req.session.name = results[0].name;
 
                 res.send(CONSTANTS.login_codes[200]);
             } else {

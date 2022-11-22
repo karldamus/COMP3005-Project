@@ -1,0 +1,38 @@
+// style <my-header> tag
+my-header {
+    display: block;
+    width: 100%;
+    margin-bottom: 1em;
+
+    img {
+        // scale svg
+        width: 40%;
+        max-width: 200px;
+        height: auto;
+    }
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+my-header .right-side {
+    display: flex;
+    gap: 30px;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .user-box a, .cart a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+
+my-header #header-logo {
+    cursor: pointer;
+}

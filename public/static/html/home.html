@@ -6,29 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Look Inna Book</title>
 
-    <style>
-        /* style table to have spacing between columns */
-        table {
-            border-collapse: collapse;
-            width: 60%;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        tr:nth-child(even){background-color: #f2f2f2}
-
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-    </style>
+    <!-- link main.css -->
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
+
+<!-- include header -->
+<my-header></my-header>
+
 <body>
-    <div id="all-books"></div>
+    
+
+    <div class="books-wrapper" id="books-wrapper">
+        <!-- TEMPLATE:
+            <div class="single-book">
+                <div class="left-side">
+                    <img src="/static/img/book.svg" alt="">
+                    <div class="book-info-wrapper">
+                        <p class="book-title">The Lord of the Rings: Part 2: The Two Towers</p>
+                        <p class="author-name">J.R.R Tolkien</p>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <p class="price">$19.99</p>
+                </div>
+            </div> 
+        -->
+    </div>
 </body>
+
+<script src="/static/js/header.js"></script>
 
 <!-- Send home.js from the public/static/js folder -->
 <script src="/static/js/home.js"></script>
