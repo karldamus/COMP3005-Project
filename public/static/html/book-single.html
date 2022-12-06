@@ -5,16 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Book</title>
+
+    <!-- link main.css -->
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
+
+<my-header></my-header>
+
 <body>
-    <p>single book</p>
-    <p><%= id =%></p>
+    <div id="single-book-data">
+        
+    </div>
 </body>
 
-<script>
-    var id = "<%= id =%>";
+<script src="/static/js/header.js"></script>
 
-    console.log(id);
-</script>
+<!-- Send home.js from the public/static/js folder -->
+<script src="/static/js/book-single.js"></script>
 
 </html>
