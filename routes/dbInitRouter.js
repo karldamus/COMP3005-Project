@@ -23,6 +23,8 @@ router.get('/init', async (req, res) => {
         // add semicolon back to end of each sql statement
         sql_arr[i] += ';';
 
+        console.log(sql_arr[i]);
+
         // execute db.query
         await db.promiseQuery(sql_arr[i], (err, results, fields) => {
             if (err) {
@@ -37,6 +39,27 @@ router.get('/init', async (req, res) => {
 });
 
 router.get('/insert', async (req, res) => {
+    // bank accounts
+    // get data from root/public/data/BankAccounts.json
+    let bankaccounts = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/data/BankAccounts.json'), 'utf8').toString());
+
+    for (let i = 0; i < bankaccounts.length; i++) {
+        let bankaccount = bankaccounts[i];
+
+        let account_number = bankaccount["Account Number"];
+        let balance = bankaccount.Balance;
+
+        let QUERY = `INSERT INTO BANK_ACCOUNTS (account_number, balance) VALUES ('${account_number}', '${balance}');`;
+
+        await db.promiseQuery(QUERY, (err, results, fields) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(results);
+            }
+        });
+    }
+
     // publishers
     // get data from root/public/data/Publishers.json
     let publishers = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/data/Publishers.json'), 'utf8').toString());
@@ -50,8 +73,11 @@ router.get('/insert', async (req, res) => {
         let state = publisher.State;
         let country = publisher.Country;
         let year_established = publisher["Year Established"];
+        let bank_account_number = publisher["Bank Account Number"];
 
-        let sql = `INSERT INTO publishers (publisher_id, house, city, state, country, year_established) VALUES ('${id}', '${house}', '${city}', '${state}', '${country}', ${year_established});`;
+        let sql = `INSERT INTO publishers (id, house, city, state, country, year_established, bank_account_number) VALUES ('${id}', '${house}', '${city}', '${state}', '${country}', ${year_established}, '${bank_account_number}');`;
+
+        console.log(sql);
 
         await db.promiseQuery(sql, (err, results, fields) => {
             // if promise is rejected
@@ -69,7 +95,7 @@ router.get('/insert', async (req, res) => {
     // get data from root/public/data/Authors.json
     let authors = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/data/Authors.json'), 'utf8').toString());
 
-    let sql = "INSERT INTO authors (author_id, name) VALUES ";
+    let sql = "INSERT INTO authors (id, name) VALUES ";
 
     for (let i = 0; i < authors.length; i++) {
         let author = authors[i];
@@ -106,7 +132,7 @@ router.get('/insert', async (req, res) => {
 
     console.log(books);
 
-    sql = "INSERT INTO books (book_id, name, ISBN, genre, price, num_pages, publisher_id, author_id) VALUES "; 
+    sql = "INSERT INTO books (id, name, ISBN, genre, price, num_pages, publisher_id, author_id) VALUES "; 
 
     for (let i = 0; i < books.length; i++) {
         let book = books[i];

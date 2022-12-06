@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 router.get('/more', async (req, res) => {
     // connect to database and get all books
-    let QUERY = "SELECT books.book_id, books.name as book_name, books.price, authors.name as author_name FROM books JOIN authors on books.author_id=authors.author_id";
+    let QUERY = "SELECT books.id, books.name as book_name, books.price, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id";
 
     await db.query(QUERY, async function(err, rows, fields) {
         if (err) {
@@ -63,7 +63,7 @@ router.get('/:id', (req, res) => {
 
     // connect to database and get book with id
     // let QUERY = "SELECT * FROM `books` WHERE `book_id` = '" + id + "'";
-    let QUERY = "SELECT books.book_id, books.name as book_name, books.ISBN, books.genre, books.price, books.num_pages, authors.author_id, authors.name as author_name FROM books JOIN authors on books.author_id=authors.author_id WHERE books.book_id='" + id + "'";
+    let QUERY = "SELECT books.id, books.name as book_name, books.ISBN, books.genre, books.price, books.num_pages, authors.id, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id WHERE books.id='" + id + "'";
 
     console.log(QUERY);
 
@@ -76,6 +76,14 @@ router.get('/:id', (req, res) => {
             res.send(rows);
         }
     });
+});
+
+router.get('/book-single/:id', (req, res) => {
+    console.log("book-single");
+    // send book-single.html file
+    // it is one directory up from the current directory in public/static/html
+    // send the book id after the link /
+    res.sendFile(path.join(__dirname, '../public/static/html/book-single.html'));
 });
 
 function searchForBook(book_id) {

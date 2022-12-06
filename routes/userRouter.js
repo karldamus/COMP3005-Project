@@ -72,6 +72,15 @@ router.post('/login', urlencodedParser, (req, res) => {
     console.log("END OF POST");
 });
 
+router.get('/logout', (req, res) => {
+    // destroy the session
+    req.session.destroy();
+    res.redirect('/');
+});
+
+router.get('/isloggedin', (req, res) => {
+    res.send(req.session.user != null);
+});
 
 router.get('/register', (req, res) => {
     // send user-register.html file
