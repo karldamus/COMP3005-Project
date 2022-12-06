@@ -9,15 +9,22 @@ const fs = require('fs');
 // env
 require("dotenv").config();
 
+app.use(express.json());
+
+const Stripe = require('stripe');
+const stripe = Stripe(process.env.stripe_test_secret_key);
+
 const session = require('express-session');
-app.use(session({secret: process.env.session_secret}));
+app.use(session({
+    secret: process.env.session_secret
+}));
 
 // data for the database
 const Books = require('./public/data/Books.json');
 
 // add & configure middleware
 app.use(express.static('public'));
-    
+
 app.get('/', (req, res) => {
     // send home.html file
     // check if session exists
@@ -29,9 +36,28 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/static/html/home.html');
 });
 
+app.post("/create-payment-intent", async (req, res) => {
+    // const { items } = req.body;
+
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+        //   amount: calculateOrderAmount(items),
+        amount: 1099,
+        currency: "cad",
+        automatic_payment_methods: {
+            enabled: true,
+        },
+    });
+
+    res.send({
+        clientSecret: paymentIntent.client_secret,
+    });
+});
+
 app.use('/book', require('./routes/bookRouter'));
 app.use('/user', require('./routes/userRouter'));
 app.use('/db', require('./routes/dbInitRouter'));
+app.use('/cart', require('./routes/cartRouter'));
 
 // display global header on all pages
 // header is located in public/static/html/global-header.html
