@@ -27,4 +27,39 @@ function createHeader(htmlContent) {
     headerLogo.onclick = function() {
         location.href = "/";
     };
+
+    // check if user is logged in
+    xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log("Check if user is logged in: " + this.responseText);
+
+            // if (this.responseText) {
+            //     // enable #login-link
+            //     document.getElementById("login-link").style.display = "block";
+
+            //     // disable #logout-link
+            //     document.getElementById("logout-link").style.display = "none";
+            // } else {
+            //     // disable #login-link
+            //     document.getElementById("login-link").style.display = "none";
+
+            //     // enable #logout-link
+            //     document.getElementById("logout-link").style.display = "block";
+            // }
+
+            
+            // if (this.responseText) {
+            //     document.getElementById("login-link").innerHTML = "Logout";
+            //     document.getElementById("login-link").href = "/user/logout";
+            // } else {
+            //     document.getElementById("login-link").innerHTML = "Login";
+            //     document.getElementById("login-link").href = "/user/login";
+            // }
+        }
+    }
+
+    xhttp.open("GET", "/user/isloggedin", true);
+    xhttp.send();
 }

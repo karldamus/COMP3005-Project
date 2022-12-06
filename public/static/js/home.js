@@ -29,7 +29,7 @@ function displayBooks(listOfBookData) {
         let book = books[i];
 
         // get book data
-        let book_id = book.book_id;
+        let book_id = book.id;
         let book_name = book.book_name;
         let author_name = book.author_name;
         let price = book.price;
@@ -42,7 +42,7 @@ function displayBooks(listOfBookData) {
 
         // add event listener
         singleBookDiv.addEventListener("click", function() {
-            displaySingleBook(book.book_id);
+            displaySingleBook(book.id);
         });
 
         // append to books wrapper
@@ -130,6 +130,11 @@ function displaySingleBook(bookId) {
 
             // get the div to display the book
             console.log(book);
+
+            console.log("Book id inside displaySingleBook: " + book.id);
+
+            // send request to get to /book-single/:id
+            // window.location.href = "/book/book-single/" + book.id;
         }
     };
 
