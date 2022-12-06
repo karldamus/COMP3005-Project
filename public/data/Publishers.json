@@ -6,7 +6,8 @@
       "State": "Washington",
       "Country": "USA",
       "Year Established": 2086,
-      "Marketing Spend": "72,000"
+      "Marketing Spend": "72,000",
+      "Bank Account Number": 1020
     },
     {
       "PubID": "SSC",
@@ -15,7 +16,8 @@
       "State": "Otago",
       "Country": "New Zealand",
       "Year Established": 2153,
-      "Marketing Spend": "151,000"
+      "Marketing Spend": "151,000",
+      "Bank Account Number": 2020
     },
     {
       "PubID": "PP",
@@ -24,7 +26,8 @@
       "State": "Scotland",
       "Country": "UK",
       "Year Established": 1982,
-      "Marketing Spend": "48,000"
+      "Marketing Spend": "48,000",
+      "Bank Account Number": 3020
     },
     {
       "PubID": "ESP",
@@ -33,6 +36,7 @@
       "State": "Washington",
       "Country": "USA",
       "Year Established": 2069,
-      "Marketing Spend": "2,320,000"
+      "Marketing Spend": "2,320,000",
+      "Bank Account Number": 4020
     }
 ]
