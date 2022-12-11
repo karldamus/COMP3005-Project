@@ -14,7 +14,7 @@ if (CONSTANTS.DEV_MODE) {
         password: process.env.dev_password,
         database: process.env.dev_database,
         waitForConnections: true,
-        connectionLimit: 10,
+        connectionLimit: 10000,
         queueLimit: 0
     });
 } else {
@@ -24,39 +24,58 @@ if (CONSTANTS.DEV_MODE) {
         password: process.env.prod_password,
         database: process.env.prod_database,
         waitForConnections: true,
-        connectionLimit: 10,
+        connectionLimit: 10000,
         queueLimit: 0
     });
 }
 
 // create promise based query function
-exports.query = async function (SQL, callback) {
-    pool.getConnection(async function (err, connection) {
-        if (err) {
-            console.log(err);
-            callback(err);
-        } else {
-            connection.query(SQL, async function (err, rows, fields) {
-                if (err) {
-                    // console.log(err);
-                    callback(err);
-                } else {
-                    // console.log(rows);
-                    callback(rows);
-                }
-            });
-        }
-    });
+exports.query = function (SQL, callback) {
+    // pool.getConnection(function (err, connection) {
+    //     if (err) {
+    //         console.log(err);
+    //         callback(err);
+    //         return;
+    //     } else {
+    //         connection.query(SQL, function (err2, rows, fields) {
+    //             if (err2) {
+    //                 // console.log(err);
+    //                 callback(err2);
+    //                 return;
+    //             } else {
+    //                 // console.log(rows);
+    //                 callback(rows);
+    //                 return;
+    //             }
+    //         });
+    //     }
+    // });
+    console.log(SQL);
+    pool.getConnection(function(err, conn) {
+        conn.query(SQL, function(err, rows, fields) {
+            if (err) {
+                console.log(err);
+                callback(err);
+                return;
+            } else {
+                console.log(rows);
+                callback(rows);
+                return;
+            }
+        });
+
+        conn.release();
+    })
 }
 
-exports.query2 = async function (SQL, callback) {
+exports.query2 = async function (QUERY, callback) {
 	return new Promise((resolve, reject) => {
         pool.getConnection(function (err, connection) {
             if (err) {
                 console.log(err);
                 reject(err);
             } else {
-                connection.query(SQL, function (err, rows, fields) {
+                connection.query(QUERY, function (err, rows, fields) {
                     if (err) {
                         console.log("ERROR INSIDE PROMISE QUERY");
                         // console.log(err);
@@ -83,11 +102,11 @@ exports.promiseQuery = function (SQL) {
                 connection.query(SQL, function (err, rows, fields) {
                     if (err) {
                         console.log("ERROR INSIDE PROMISE QUERY");
-                        console.log(err);
+                        // console.log(err);
                         resolve(err);
                     } else {
                         console.log("SUCCESS INSIDE PROMISE QUERY");
-                        console.log(rows);
+                        // console.log(rows);
                         resolve(rows);
                     }
                 });
@@ -96,3 +115,28 @@ exports.promiseQuery = function (SQL) {
     });
 }
 
+
+// exports.promiseQuery2 = function (SQL) {
+//     // dont use pool
+//     return new Promise((resolve, reject) => {
+//         var connection = mysql.createConnection({
+//             host: process.env.prod_host,
+//             user: process.env.prod_user,
+//             password: process.env.prod_password,
+//             database: process.env.prod_database
+//         });
+//         connection.connect();
+//         connection.query(SQL, function (err, rows, fields) {
+//             if (err) {
+//                 console.log("ERROR INSIDE PROMISE QUERY");
+//                 // console.log(err);
+//                 resolve(err);
+//             } else {
+//                 console.log("SUCCESS INSIDE PROMISE QUERY");
+//                 // console.log(rows);
+//                 resolve(rows);
+//             }
+//         });
+//         connection.end();
+//     });
+// }
