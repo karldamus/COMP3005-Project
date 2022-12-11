@@ -6,6 +6,9 @@ const router = express.Router();
 
 var db = require('./db');
 
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 var path = require('path');
 
 router.get('/', (req, res) => {
@@ -14,28 +17,38 @@ router.get('/', (req, res) => {
 
     db.query(QUERY, function(err, rows, fields) {
         if (err) {
-            // console.log(err);
+            console.log("Error");
             res.send(err);
         } else {
-            // console.log(rows);
+            console.log("Rows");
             res.send(rows);
         }
     });
 });
 
-router.get('/more', async (req, res) => {
+router.get('/more', (req, res) => {
+    console.log("Inside /more");
     // connect to database and get all books
     let QUERY = "SELECT books.id, books.name as book_name, books.price, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id";
 
-    await db.query(QUERY, async function(err, rows, fields) {
+    db.query(QUERY, function(err, rows, fields) {
         if (err) {
-			// send err
 			res.send(err);
-
-            // console.log(err);
-            // res.send(err);
         } else {
-            // console.log(rows);
+            res.send(rows);
+        }
+    });
+});
+
+router.get('/search/:searchQuery', urlencodedParser, (req, res) => {
+    let searchQuery = req.params.searchQuery;
+
+    let QUERY = "SELECT books.id, books.name as book_name, books.price, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id WHERE books.name LIKE '%" + searchQuery + "%' OR authors.name LIKE '%" + searchQuery + "%'";
+
+    db.query(QUERY, function(err, rows, fields) {
+        if (err) {
+            res.send(err);
+        } else {
             res.send(rows);
         }
     });
@@ -63,7 +76,7 @@ router.get('/:id', (req, res) => {
 
     // connect to database and get book with id
     // let QUERY = "SELECT * FROM `books` WHERE `book_id` = '" + id + "'";
-    let QUERY = "SELECT books.id, books.name as book_name, books.ISBN, books.genre, books.price, books.num_pages, authors.id, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id WHERE books.id='" + id + "'";
+    let QUERY = "SELECT books.id, books.name as book_name, books.ISBN, books.genre, books.price, books.num_pages, authors.id as author_id, authors.name as author_name FROM books JOIN authors on books.author_id=authors.id WHERE books.id='" + id + "'";
 
     console.log(QUERY);
 
