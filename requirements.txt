@@ -5,4 +5,4 @@ fs
 body-parser
 crypto
 express-session
-stripe
+stripe # ignore
