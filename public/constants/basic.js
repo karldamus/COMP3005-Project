@@ -1,6 +1,20 @@
 const constants = {
     DEV_MODE: true,
 
+    ORDER_STATUS: {
+        PLACED: 1,
+        SHIPPED: 2,
+        DELIVERED: 3
+    },
+
+    order_codes: {
+        500: {
+            message: "Internal Server Error",
+            code: 500,
+            redirect_url: "/cart/checkout"
+        },
+    },
+
     registration_codes: {
         409: {
             message: "Username already exists",
