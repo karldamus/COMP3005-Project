@@ -58,6 +58,10 @@ router.post('/login', urlencodedParser, (req, res) => {
                 // create a session for the user
                 req.session.user = username;
                 req.session.name = results[0].name;
+                req.session.userId = results[0].id;
+                req.session.creditCardId = results[0].credit_card_id;
+                req.session.shippingAddressId = results[0].shipping_address_id;
+                req.session.billingAddressId = results[0].billing_address_id;
 
                 res.send(CONSTANTS.login_codes[200]);
             } else {
@@ -75,7 +79,8 @@ router.post('/login', urlencodedParser, (req, res) => {
 router.get('/logout', (req, res) => {
     // destroy the session
     req.session.destroy();
-    res.redirect('/');
+    // res.redirect('/');
+    res.send('<script>alert("Successfully logged out."); window.location.href = "/"; </script>');
 });
 
 router.get('/isloggedin', (req, res) => {
