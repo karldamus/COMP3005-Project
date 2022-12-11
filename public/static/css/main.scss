@@ -11,9 +11,10 @@ html {
 // import my-header
 @import "scss/_my-header";
 
-// import home
+// pages
 @import "scss/_home";
-
+@import "scss/_single-book";
+@import "scss/_cart";
 
 // components
 @import "scss/_form";

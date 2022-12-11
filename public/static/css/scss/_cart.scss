@@ -1,0 +1,35 @@
+#cart-wrapper {
+    margin-top: 2rem;
+    // give each cart item it's own row
+    .cart-item {
+        display: grid;
+        grid-template-columns: 2fr 2fr 1fr 1fr;
+        grid-gap: 1rem;
+        margin-bottom: 1rem;
+        // give each cart item a border
+        border: 1px solid #ccc;
+        // give each cart item a border radius
+        border-radius: 5px;
+        // give each cart item a padding
+        padding: 1rem;
+    }
+
+    .checkout-btn {
+        margin-top: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 1rem;
+        background-color: #ccc;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        width: 100%;
+
+        &:hover {
+            background-color: #fff;
+            color: #ccc;
+            cursor: pointer;
+        }
+    }
+}

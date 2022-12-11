@@ -1,0 +1,77 @@
+#single-book-data {
+    width: 100%;
+    text-align: center;
+
+    // center whole block horizontally and vertically
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    #title {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+    }
+
+    #metadata {
+        margin-bottom: 1em;
+        display: grid;
+        
+        // single column grid with 0.5em gap
+        grid-template-columns: 1fr;
+        grid-gap: 0.5em;
+
+        #author, #genre, #price, #numPages {
+            display: flex;
+            justify-content: center;
+        }
+
+        #author {
+            &:before {
+                content: "Author:   ";
+                padding-right: 0.5em;
+            }
+        }
+
+        #genre {
+            &:before {
+                content: "Genre:   ";
+                padding-right: 0.5em;
+            }
+        }
+
+        #book-details {
+            display: flex; 
+            justify-content: center;
+            gap: 0.5em;
+
+            #price {
+                &:before {
+                    content: "Price:   ";
+                    padding-right: 0.5em;
+                }
+            }
+
+            #numPages {
+                &:before {
+                    content: "Pages:   ";
+                    padding-right: 0.5em;
+                }
+            }
+        }
+    }
+
+    #buttonWrapper {
+        button {
+            padding: 0.5em 1em;
+            border: none;
+            background-color: #ddd;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #f1f1f1;
+            }
+        }
+    }
+}
