@@ -43,6 +43,9 @@ nodemon app.js
 2. Restart the server
 3. Head to http://localhost:3000/db/insert to insert all the values
 
+#### View the App
+- Head to http://localhost:3000
+
 ## Common Problems
 
 Problem: The site http://localhost:3000 can't be reached
